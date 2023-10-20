@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mark Sheet</title>
+</head>
+<body>
+    <h1>Mark Sheet</h1>
+    <form id="markSheetForm">
+        <label for="seatNumber">Enter Seat Number:</label>
+        <input type="text" id="seatNumber" name="seatNumber" required>
+        <button type="button" onclick="displayMarkSheet()">Show Mark Sheet</button>
+    </form>
+    <div id="markSheetResult"></div>
+    
+    <script>
+        function displayMarkSheet() {
+            var seatNumber = document.getElementById("seatNumber").value;
+            
+            // Replace this with actual data retrieval logic (e.g., fetching from a database)
+            var markSheetData = getMarkSheetData(seatNumber);
+
+            if (markSheetData) {
+                var markSheetResult = document.getElementById("markSheetResult");
+                markSheetResult.innerHTML = "<h2>Mark Sheet for Seat Number: " + seatNumber + "</h2>";
+                markSheetResult.innerHTML += "<p>Name: " + markSheetData.name + "</p>";
+                markSheetResult.innerHTML += "<p>C: " + markSheetData.subject1 + "</p>";
+                markSheetResult.innerHTML += "<p>Java: " + markSheetData.subject2 + "</p>";
+                markSheetResult.innerHTML += "<p>Python: " + markSheetData.subject3 + "</p>";
+                markSheetResult.innerHTML += "<p>Total Marks: " + markSheetData.totalMarks + "</p>";
+            } else {
+                alert("Mark Sheet not found for the entered seat number.");
+            }
+        }
+
+        // Replace this function with your actual data retrieval logic (e.g., AJAX call to a server)
+        function getMarkSheetData(seatNumber) {
+            // Sample data, replace with actual data retrieval logic
+            var markSheetData = {
+                name: "Harsh Jaiswal",
+                subject1: 95,
+                subject2: 88,
+                subject3: 76,
+                totalMarks: 259
+            };
+
+            return markSheetData;
+        }
+    </script>
+</body>
+</html>

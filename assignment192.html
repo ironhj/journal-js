@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fibonacci Series</title>
+</head>
+<body>
+    <h1>Fibonacci Series</h1>
+    <p>The first 10 Fibonacci numbers are:</p>
+    <textarea rows="10" cols="30" id="fibonacciNumbers"></textarea>
+    <br>
+    <button onclick="goBack()">Back</button>
+
+    <script>
+        // Retrieve the Fibonacci numbers from the query parameter
+        var urlParams = new URLSearchParams(window.location.search);
+        var fibonacciNumbers = urlParams.get('numbers');
+
+        // Display the Fibonacci numbers in the text area
+        document.getElementById('fibonacciNumbers').value = fibonacciNumbers;
+
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

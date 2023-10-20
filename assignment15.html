@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Operations</h1>
+        <form id="numberForm">
+            <label for="number">Enter a number:</label>
+            <input type="text" id="number" name="number" required>
+            <label for="operation">Select an operation:</label>
+            <select id="operation" name="operation">
+                <option value="evenodd">Even/Odd</option>
+                <option value="prime">Prime/Not Prime</option>
+                <option value="positive">Positive/Negative</option>
+            </select>
+            <button type="button" onclick="performOperation()">Submit</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function performOperation() {
+            var number = parseInt(document.getElementById("number").value);
+            var operation = document.getElementById("operation").value;
+            var resultMessage = "";
+
+            if (operation === "evenodd") {
+                resultMessage = number % 2 === 0 ? "Even" : "Odd";
+            } else if (operation === "prime") {
+                resultMessage = isPrime(number) ? "Prime" : "Not Prime";
+            } else if (operation === "positive") {
+                resultMessage = number >= 0 ? "Positive" : "Negative";
+            }
+
+            document.getElementById("result").innerText = "Result: " + resultMessage;
+        }
+
+        function isPrime(num) {
+            if (num <= 1) return false;
+            if (num <= 3) return true;
+            if (num % 2 === 0 || num % 3 === 0) return false;
+
+            for (var i = 5; i * i <= num; i += 6) {
+                if (num % i === 0 || num % (i + 2) === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

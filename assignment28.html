@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Functions Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>String Functions Demo</h2>
+        <button id="show-button">Show</button>
+        <div id="output" style="display: none;">
+            <p><strong>Original String:</strong> <span id="original-string">Hello, World!</span></p>
+            <p><strong>Length:</strong> <span id="string-length"></span></p>
+            <p><strong>Uppercase:</strong> <span id="uppercase"></span></p>
+            <p><strong>Lowercase:</strong> <span id="lowercase"></span></p>
+            <p><strong>Substring (2-7):</strong> <span id="substring"></span></p>
+            <p><strong>Replace 'World' with 'Universe':</strong> <span id="replace"></span></p>
+        </div>
+    </div>
+
+    <script>
+        const showButton = document.getElementById("show-button");
+        const outputDiv = document.getElementById("output");
+        const originalString = document.getElementById("original-string");
+        const stringLength = document.getElementById("string-length");
+        const uppercase = document.getElementById("uppercase");
+        const lowercase = document.getElementById("lowercase");
+        const substring = document.getElementById("substring");
+        const replace = document.getElementById("replace");
+
+        showButton.addEventListener("click", function () {
+            outputDiv.style.display = "block";
+
+            const text = originalString.textContent;
+            stringLength.textContent = text.length;
+            uppercase.textContent = text.toUpperCase();
+            lowercase.textContent = text.toLowerCase();
+            substring.textContent = text.substring(2, 7);
+            replace.textContent = text.replace("World", "Universe");
+        });
+    </script>
+</body>
+</html>

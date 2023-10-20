@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Expression Evaluator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Math Expression Evaluator</h2>
+        <label for="expression">Enter a Mathematical Expression:</label>
+        <input type="text" id="expression" name="expression" placeholder="e.g., 2+2" required><br><br>
+        <button id="calculate-button">Calculate</button><br><br>
+        <label for="result">Result:</label>
+        <input type="text" id="result" name="result" readonly>
+    </div>
+
+    <script>
+        const calculateButton = document.getElementById("calculate-button");
+        const expressionInput = document.getElementById("expression");
+        const resultInput = document.getElementById("result");
+
+        calculateButton.addEventListener("click", function () {
+            const expression = expressionInput.value;
+            try {
+                const result = eval(expression);
+                resultInput.value = result;
+            } catch (error) {
+                resultInput.value = "Invalid Expression";
+            }
+        });
+    </script>
+</body>
+</html>

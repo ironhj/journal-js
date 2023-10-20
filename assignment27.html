@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Order Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Purchase Order Form</h2>
+        <form id="purchase-order-form">
+            <label for="vendor">Vendor:</label>
+            <input type="text" id="vendor" name="vendor" required><br><br>
+
+            <label for="product">Product:</label>
+            <input type="text" id="product" name="product" required><br><br>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" required><br><br>
+
+            <label for="unit-price">Unit Price:</label>
+            <input type="number" id="unit-price" name="unit-price" required><br><br>
+
+            <button type="button" id="calculate-total">Calculate Total</button><br><br>
+
+            <label for="total">Total:</label>
+            <input type="text" id="total" name="total" disabled><br><br>
+
+            <button type="submit">Submit Purchase Order</button>
+        </form>
+    </div>
+
+    <script>
+        const purchaseOrderForm = document.getElementById("purchase-order-form");
+        const calculateTotalButton = document.getElementById("calculate-total");
+        const totalInput = document.getElementById("total");
+
+        calculateTotalButton.addEventListener("click", function () {
+            const quantity = parseFloat(document.getElementById("quantity").value);
+            const unitPrice = parseFloat(document.getElementById("unit-price").value);
+            const total = quantity * unitPrice;
+
+            if (!isNaN(total)) {
+                totalInput.value = total.toFixed(2);
+            } else {
+                totalInput.value = "Invalid input";
+            }
+        });
+
+        purchaseOrderForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // You can handle the purchase order submission here
+            alert("Purchase order submitted. (Not implemented in this example)");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Table Generator</title>
+</head>
+<body>
+    <h1>Number Table Generator</h1>
+    <form name="numberTableForm">
+        <label for="startNumber">Start Number:</label>
+        <input type="number" id="startNumber" name="startNumber" value="2">
+        
+        <label for="endNumber">End Number:</label>
+        <input type="number" id="endNumber" name="endNumber" value="10">
+        
+        <button type="button" onclick="generateTable()">Generate Table</button>
+    </form>
+    
+    <div id="tableContainer"></div>
+
+    <script>
+        function generateTable() {
+            var startNumber = parseInt(document.getElementById("startNumber").value);
+            var endNumber = parseInt(document.getElementById("endNumber").value);
+            var tableContainer = document.getElementById("tableContainer");
+            var tableHTML = '<table border="1"><thead><tr><th>Number</th><th>Square</th><th>Cube</th></tr></thead><tbody>';
+
+            for (var i = startNumber; i <= endNumber; i++) {
+                var square = i * i;
+                var cube = i * i * i;
+                tableHTML += '<tr><td>' + i + '</td><td>' + square + '</td><td>' + cube + '</td></tr>';
+            }
+
+            tableHTML += '</tbody></table>';
+            tableContainer.innerHTML = tableHTML;
+        }
+    </script>
+</body>
+</html>

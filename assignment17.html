@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Triangular Pyramid Generator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Triangular Pyramid Generator</h1>
+        <form>
+            <label for="lines">Enter the number of lines:</label>
+            <input type="number" id="lines" name="lines" min="1" required>
+            <button type="button" onclick="generatePyramid()">Generate Pyramid</button>
+        </form>
+        <div id="pyramid"></div>
+    </div>
+
+    <script>
+        function generatePyramid() {
+            var lines = parseInt(document.getElementById("lines").value);
+            var pyramid = document.getElementById("pyramid");
+            pyramid.innerHTML = '';
+
+            for (var i = 1; i <= lines; i++) {
+                var spaces = ' '.repeat(lines - i);
+                var stars = '*'.repeat(2 * i - 1);
+                pyramid.innerHTML += '<p>' + spaces + stars + spaces + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>

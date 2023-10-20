@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admission Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Admission Form</h2>
+        <form id="admission-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="matriculation-marks">Matriculation Marks:</label>
+            <input type="number" id="matriculation-marks" name="matriculation-marks" required><br><br>
+
+            <label for="higher-secondary-marks">Higher Secondary Marks:</label>
+            <input type="number" id="higher-secondary-marks" name="higher-secondary-marks" required><br><br>
+
+            <label for="graduation-marks">Graduation Marks:</label>
+            <input type="number" id="graduation-marks" name="graduation-marks" required><br><br>
+
+            <label for="course">Select Course:</label>
+            <select id="course" name="course">
+                <option value="any">Any Course</option>
+                <option value="mca">MCA</option>
+            </select><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+        <p id="result" style="display: none;"></p>
+    </div>
+
+    <script>
+        const admissionForm = document.getElementById("admission-form");
+        const resultMessage = document.getElementById("result");
+
+        admissionForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const matriculationMarks = parseInt(document.getElementById("matriculation-marks").value);
+            const higherSecondaryMarks = parseInt(document.getElementById("higher-secondary-marks").value);
+            const graduationMarks = parseInt(document.getElementById("graduation-marks").value);
+            const selectedCourse = document.getElementById("course").value;
+
+            if (matriculationMarks > 55 && higherSecondaryMarks > 60 && graduationMarks > 60) {
+                if (selectedCourse === "mca") {
+                    resultMessage.textContent = "Congratulations! You are eligible for the MCA course.";
+                } else {
+                    resultMessage.textContent = "Congratulations! You are eligible for any course.";
+                }
+            } else {
+                resultMessage.textContent = "Sorry, you do not meet the eligibility criteria for any course.";
+            }
+
+            resultMessage.style.display = "block";
+        });
+    </script>
+</body>
+</html>

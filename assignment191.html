@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fibonacci Series</title>
+</head>
+<body>
+    <h1>Fibonacci Series</h1>
+    <button onclick="showFibonacci()">Show</button>
+    
+    <script>
+        function showFibonacci() {
+            // Create a comma-separated string of the first 10 Fibonacci numbers
+            var fibonacciNumbers = calculateFibonacci(10).join(', ');
+
+            // Redirect to the second page with the Fibonacci numbers as a query parameter
+            window.location.href = 'fibonacci.html?numbers=' + fibonacciNumbers;
+        }
+
+        function calculateFibonacci(count) {
+            var fibonacci = [0, 1];
+            for (var i = 2; i < count; i++) {
+                fibonacci.push(fibonacci[i - 1] + fibonacci[i - 2]);
+            }
+            return fibonacci;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information Form</title>
+    <script>
+        function validateForm() {
+            var name = document.forms["userInfoForm"]["name"].value;
+            var stdCode = document.forms["userInfoForm"]["stdCode"].value;
+            var landline = document.forms["userInfoForm"]["landline"].value;
+            var mobile = document.forms["userInfoForm"]["mobile"].value;
+            var email = document.forms["userInfoForm"]["email"].value;
+
+            var stdCodePattern = /^\d{1,4}$/;
+            var landlinePattern = /^\d{5,7}$/;
+            var mobilePattern = /^\d{10}$/;
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            if (name == "") {
+                alert("Name must be filled out");
+                return false;
+            }
+            if (!stdCode.match(stdCodePattern)) {
+                alert("Invalid STD code (should be 1-4 digits)");
+                return false;
+            }
+            if (!landline.match(landlinePattern)) {
+                alert("Invalid landline number (should be 5-7 digits)");
+                return false;
+            }
+            if (!mobile.match(mobilePattern)) {
+                alert("Invalid mobile number (should be 10 digits)");
+                return false;
+            }
+            if (!email.match(emailPattern)) {
+                alert("Invalid email address");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>User Information Form</h1>
+    <form name="userInfoForm" onsubmit="return validateForm()" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+
+        <label for="stdCode">STD Code:</label>
+        <input type="text" name="stdCode" required><br>
+
+        <label for="landline">Landline Number:</label>
+        <input type="text" name="landline" required><br>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="text" name="mobile" required><br>
+
+        <label for="email">Email:</label>
+        <input type="text" name="email" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

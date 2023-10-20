@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Online Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin: 20px 0;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        #order-summary {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Restaurant Name</h1>
+    </header>
+    <div class="container">
+        <h2>Menu</h2>
+        <form id="order-form">
+            <div class="menu-item">
+                <span>Burger</span>
+                <span>$10.00</span>
+                <input type="number" name="burger" value="0" min="0">
+            </div>
+            <div class="menu-item">
+                <span>Pizza</span>
+                <span>$12.00</span>
+                <input type="number" name="pizza" value="0" min="0">
+            </div>
+            <div class="menu-item">
+                <span>Pasta</span>
+                <span>$8.00</span>
+                <input type="number" name="pasta" value="0" min="0">
+            </div>
+            <button type="submit">Place Order</button>
+        </form>
+        <div id="order-summary">
+            Total Amount: $<span id="total-amount">0.00</span>
+        </div>
+    </div>
+    <script>
+        const orderForm = document.getElementById("order-form");
+        const totalAmount = document.getElementById("total-amount");
+
+        orderForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            
+            const burgerQuantity = parseInt(document.querySelector('input[name="burger"]').value);
+            const pizzaQuantity = parseInt(document.querySelector('input[name="pizza"]').value);
+            const pastaQuantity = parseInt(document.querySelector('input[name="pasta"]').value);
+            
+            const burgerPrice = 10.00;
+            const pizzaPrice = 12.00;
+            const pastaPrice = 8.00;
+            
+            const orderTotal = (burgerQuantity * burgerPrice) + (pizzaQuantity * pizzaPrice) + (pastaQuantity * pastaPrice);
+            
+            totalAmount.textContent = orderTotal.toFixed(2);
+        });
+    </script>
+</body>
+</html>
